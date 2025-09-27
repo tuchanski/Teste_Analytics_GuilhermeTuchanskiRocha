@@ -7,23 +7,23 @@ import os
 
 # Carregando variáveis de ambiente do arquivo .env
 env.load_dotenv()
-DATASET_PATH = os.getenv("DATASET_PATH")
+CAMINHO_DATASET = os.getenv("DATASET_PATH")
 
 # === Funções ===
 
-def load_dataset():
+def carregar_dataset():
     try:
-        df = pd.read_csv(DATASET_PATH)
+        df = pd.read_csv(CAMINHO_DATASET)
         return df
     except FileNotFoundError:
-        print(f"Erro: O arquivo no caminho {DATASET_PATH} não foi encontrado.")
+        print(f"Erro: O arquivo no caminho {CAMINHO_DATASET} não foi encontrado.")
         return None
     except Exception as e:
         print(f"Erro ao carregar o dataset: {e}")
         return None
 
 if __name__ == "__main__":
-    dataset = load_dataset()
+    dataset = carregar_dataset()
 
     if dataset is not None:
         print("Dataset carregado com sucesso!")
