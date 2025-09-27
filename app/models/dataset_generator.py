@@ -1,3 +1,9 @@
+"""
+Este script gera um dataset fictício de vendas, incluindo alguns erros intencionais
+como valores faltantes e duplicatas, para fins de teste e demonstração.
+O dataset é salvo em um arquivo CSV chamado 'dataset_vendas.csv'.
+"""
+
 import pandas as pd
 import numpy as np
 import random
