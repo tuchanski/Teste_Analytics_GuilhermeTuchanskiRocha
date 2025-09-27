@@ -5,8 +5,9 @@ import os
 
 # === Configs ===
 
-# Carregando variáveis de ambiente do arquivo .env
 env.load_dotenv()
+pd.set_option("display.float_format", "{:.2f}".format)
+
 CAMINHO_DATASET = os.getenv("DATASET_PATH")
 
 # === Funções ===
