@@ -11,7 +11,7 @@ CAMINHO_DATASET = os.getenv("DATASET_PATH")
 
 # === Funções ===
 
-def carregar_dataset():
+def carregar_dataset() -> pd.DataFrame | None:
     try:
         df = pd.read_csv(CAMINHO_DATASET)
         return df
