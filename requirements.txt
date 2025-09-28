@@ -1,1 +1,1 @@
-pandas numpy python-dotenv
+pandas numpy python-dotenv matplotlib
