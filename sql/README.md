@@ -41,7 +41,7 @@ SELECT Produto, Categoria, SUM(Quantidade * `Preço`) AS Total_Vendas_Junho
 FROM Vendas
 WHERE `Data` >= '2023-06-01' AND `Data` < '2023-07-01'
 GROUP BY Produto, Categoria
-ORDER BY Total_Vendas_Junho ASC
+ORDER BY Total_Vendas_Junho ASC;
 ```
 
 Resultado:
