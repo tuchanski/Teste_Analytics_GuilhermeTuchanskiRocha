@@ -45,9 +45,8 @@ def limpar_dataset(df: pd.DataFrame) -> pd.DataFrame:
     # Tratando valores de string vazios
     df.replace("", np.nan, inplace=True)
 
-    # Tratando valores de quantidade nulos
-    df = preencher_quantidade(df, precos_unitarios)
-    df["Quantidade"] = df["Quantidade"].fillna(df["Quantidade"].median()) # Fallback
+    # Tratando valores de quantidade
+    df["Quantidade"] = df["Quantidade"].fillna(df["Quantidade"].median())
 
     # Tratando valores de preço nulos
     df = preencher_preco(df, precos_unitarios)
@@ -92,25 +91,13 @@ def preencher_produto(df: pd.DataFrame, precos_unitarios: dict) -> pd.DataFrame:
                     break
     return df
 
-def preencher_quantidade(df: pd.DataFrame, precos_unitarios: dict) -> pd.DataFrame:
-    for indice, linha in df.iterrows():
-        produto = linha["Produto"]
-        preco = linha["Preço"]
-        quantidade = linha["Quantidade"]
-
-        if pd.isna(quantidade) and pd.notna(preco) and produto in precos_unitarios:
-            df.at[indice, "Quantidade"] = preco / precos_unitarios[produto]
-    
-    return df
-
 def preencher_preco(df: pd.DataFrame, precos_unitarios: dict) -> pd.DataFrame:
     for indice, linha in df.iterrows():
         produto = linha["Produto"]
         preco = linha["Preço"]
-        quantidade = linha["Quantidade"]
 
-        if pd.isna(preco) and pd.notna(quantidade) and produto in precos_unitarios:
-            df.at[indice, "Preço"] = quantidade * precos_unitarios[produto]
+        if pd.isna(preco) and produto in precos_unitarios:
+            df.at[indice, "Preço"] = precos_unitarios[produto]
     
     return df
 

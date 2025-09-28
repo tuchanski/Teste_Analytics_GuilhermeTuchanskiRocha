@@ -21,7 +21,7 @@ produtos = {
     "Notebook": [categorias["ELETRONICOS"], 4500.00],
     "Computador Gamer": [categorias["ELETRONICOS"], 5500.00],
     "Headset Logitech": [categorias["ACESSORIOS"], 190.00],
-    "Geforce RTX 5090": [categorias["ELETRONICOS"], 3500.00],
+    "Geforce RTX 5090": [categorias["ELETRONICOS"], 13000.00],
     "Café Pelé 500g": [categorias["ALIMENTOS"], 15.00],
     "Lasanha Congelada 500g": [categorias["ALIMENTOS"], 30.00],
     "Pinhão 1kg": [categorias["ALIMENTOS"], 25.00],
@@ -38,10 +38,6 @@ preco_unitario_lista = [detalhes[1] for _, detalhes in produtos_escolhidos]
 
 # Gerando quantidades aleatórias entre 1 e 20
 quantidades = np.random.randint(1, 20, size=QTDE_PRODUTOS)
-
-# Calculando o preço total
-preco_unit_np = np.array(preco_unitario_lista)
-preco_total = np.round(preco_unit_np * quantidades, 2)
 
 # Gerando datas aleatórias em 2023
 data_inicial = pd.to_datetime("2023-01-01")
@@ -61,7 +57,7 @@ df = pd.DataFrame(
     "Produto": produtos_lista,
     "Categoria": categorias_lista,
     "Quantidade": quantidades,
-    "Preço": preco_total
+    "Preço": preco_unitario_lista
   }
 )
 
