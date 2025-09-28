@@ -1,6 +1,7 @@
 import dotenv as env
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 import os
 
 # === Configs ===
@@ -9,6 +10,7 @@ pd.set_option("display.float_format", "{:.2f}".format)
 
 # === Constantes ===
 CAMINHO_DATASET_LIMPO = os.getenv("CLEANED_DATASET_PATH")
+CAMINHO_PLOTS = os.getenv("PLOTS_PATH")
 
 # === Funções ===
 def carregar_dataset(caminho: str) -> pd.DataFrame | None:
@@ -31,6 +33,28 @@ def get_produto_com_mais_vendas(vendas_totais_df: pd.DataFrame) -> pd.Series:
     produto_top = vendas_totais_df.loc[vendas_totais_df["Total_Vendas"].idxmax()]
     return produto_top
 
+def get_quantidade_vendas_por_produto_individual(df: pd.DataFrame) -> pd.DataFrame:
+    total_vendas_por_produto = df.groupby("Produto")["Quantidade"].sum().reset_index()
+    total_vendas_por_produto.rename(columns={"Quantidade": "Total_Quantidade"}, inplace=True)
+    return total_vendas_por_produto
+
+def plotar_grafico_vendas_mensais(df: pd.DataFrame):
+    df['Data'] = pd.to_datetime(df['Data'])
+    df['AnoMes'] = df['Data'].dt.to_period('M')
+    vendas_mensais = df.groupby('AnoMes')['Quantidade'].sum().reset_index()
+    vendas_mensais['AnoMes'] = vendas_mensais['AnoMes'].dt.to_timestamp()
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(vendas_mensais['AnoMes'], vendas_mensais['Quantidade'], marker='o')
+    plt.title('Tendência de Vendas Mensais ao Longo do Tempo')
+    plt.xlabel('Mês')
+    plt.ylabel('Quantidade Vendida')
+    plt.grid(True)
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    plt.savefig(CAMINHO_PLOTS)
+
 if __name__ == "__main__":
     print(f"\n====================================\n")
     print("Análise de Dados - Parte 1")
@@ -51,6 +75,15 @@ if __name__ == "__main__":
         print(f"Produto com maior número de vendas totais:")
         print(f"Produto: {produto}")
         print(f"Total de Vendas: R$ {total_vendas:.2f}")
-    
+
+        print(f"\n====================================\n")
+
+        vendas_por_produto_individual = get_quantidade_vendas_por_produto_individual(df_limpo)
+        print(vendas_por_produto_individual)
+
+        print(f"\n====================================\n")
+
+        plotar_grafico_vendas_mensais(df_limpo)
+
     else:
         print("Não foi possível carregar o dataset limpo para análise.")
