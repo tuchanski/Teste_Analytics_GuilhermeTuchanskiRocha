@@ -63,7 +63,7 @@ já que isso por consequência aumentaria a exposição dos produtos que de fato
 
 ## 6. Gráfico de Tendência de Vendas ao Longo do Tempo
 
-![chart](./analysis/plot/monthly_sales_amount.png)
+![chart](./src/analysis/plots/monthly_sales_amount.png)
 
 Nesse caso, poderiamos avaliar também pela métrica de quantidade de produtos vendidos
 por mês. Aqui, escolhi o faturamento para uma análise mais completa do desempenho mensal.
@@ -92,7 +92,7 @@ o faturamento sozinhos.
 ### 6.4. Insights Estratégicos
 
 - A empresa é MUITO dependente de meses específicos (Agosto e Novembro). Essa dependência é um risco se, por exemplo,
-não tiver estoque o suficiente dos eletrônicos nesses meses.
+  não tiver estoque o suficiente dos eletrônicos nesses meses.
 
 - Baixa consistência mensal: falta de planejamento ou eventos pontuais.
 
