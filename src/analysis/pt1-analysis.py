@@ -1,3 +1,7 @@
+# Este script realiza análises exploratórias em um dataset limpo de vendas.
+# Ele calcula o faturamento por produto, identifica o produto com maior
+# número de vendas, e plota gráficos de vendas mensais.
+
 import dotenv as env
 import pandas as pd
 import numpy as np
