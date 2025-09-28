@@ -71,7 +71,7 @@ def limpar_dataset(df: pd.DataFrame) -> pd.DataFrame:
     df["Categoria"] = df["Categoria"].fillna("CATEGORIA DESCONHECIDA") # Fallback
 
     # Dropando repetidos
-    df.drop_duplicates(inplace=True)
+    df.drop_duplicates(subset=["ID"], inplace=True)
 
     return df
 
