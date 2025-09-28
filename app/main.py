@@ -18,7 +18,7 @@ pd.set_option("display.float_format", "{:.2f}".format)
 
 # === Constantes ===
 
-CAMINHO_DATASET = os.getenv("DATASET_PATH")
+CAMINHO_DATASET = os.getenv("DIRTY_DATASET_PATH")
 
 # === Funções ===
 
