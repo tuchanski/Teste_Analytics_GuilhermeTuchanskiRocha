@@ -34,16 +34,13 @@ def get_produto_com_mais_vendas(vendas_totais_df: pd.DataFrame) -> pd.Series:
 if __name__ == "__main__":
     print(f"\n====================================\n")
     print("Análise de Dados - Parte 1")
-    print(f"\n====================================\n")
 
-    df = carregar_dataset(CAMINHO_DATASET_LIMPO)
+    df_limpo = carregar_dataset(CAMINHO_DATASET_LIMPO)
 
-    if df is not None:
-        
-        vendas_por_produto = get_quantidade_vendas_por_produto(df)
+    if df_limpo is not None:
+
+        vendas_por_produto = get_quantidade_vendas_por_produto(df_limpo)
         print(vendas_por_produto)
-
-
         print(f"\n====================================\n")
 
         produto_top_series = get_produto_com_mais_vendas(vendas_por_produto)
@@ -54,3 +51,6 @@ if __name__ == "__main__":
         print(f"Produto com maior número de vendas totais:")
         print(f"Produto: {produto}")
         print(f"Total de Vendas: R$ {total_vendas:.2f}")
+    
+    else:
+        print("Não foi possível carregar o dataset limpo para análise.")
