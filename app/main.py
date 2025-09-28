@@ -5,6 +5,7 @@ O dataset é gerado com erros intencionais para simular situações reais de dad
 O arquivo que gera o dataset fictício está localizado em 'app/models/dataset_generator.py'.
 """
 
+import unicodedata
 import pandas as pd
 import numpy as np
 import dotenv as env
@@ -37,6 +38,10 @@ def limpar_dataset(df: pd.DataFrame) -> pd.DataFrame:
     precos_unitarios = get_precos_unitarios(df)
     categorias = get_categorias(df)
 
+    # Normalizando texto
+    df["Produto"] = df["Produto"].apply(normalizar_texto)
+    df["Categoria"] = df["Categoria"].apply(normalizar_texto)
+
     # Tipagem
     df["Data"] = pd.to_datetime(df["Data"], errors="coerce")
     df["Quantidade"] = pd.to_numeric(df["Quantidade"], errors="coerce")
@@ -46,22 +51,24 @@ def limpar_dataset(df: pd.DataFrame) -> pd.DataFrame:
     df.replace("", np.nan, inplace=True)
 
     # Tratando valores de quantidade
-    df["Quantidade"] = df["Quantidade"].fillna(df["Quantidade"].median())
+    df = preencher_quantidade(df) # Preenchendo com a mediana
+    df["Quantidade"] = df["Quantidade"].fillna(1) # Fallback
 
     # Tratando valores de preço nulos
     df = preencher_preco(df, precos_unitarios)
     df["Preço"] = df["Preço"].fillna(df["Preço"].median()) # Fallback
 
     # Tratando datas
-    df["Data"] = df["Data"].ffill().bfill() # Preenchendo com o valor mais próximo
+    df = preencher_data(df) # Preenchendo com o valor anterior ou posterior
+    df["Data"] = df["Data"].fillna(pd.to_datetime("2023-01-01")) # Fallback
 
     # Tratando valores de produto nulos
     df = preencher_produto(df, precos_unitarios)
-    df["Produto"] = df["Produto"].fillna("Produto Desconhecido") # Fallback
+    df["Produto"] = df["Produto"].fillna("PRODUTO DESCONHECIDO") # Fallback
 
     # Tratando valores de categoria nulos
     df = preencher_categoria(df, categorias)
-    df["Categoria"] = df["Categoria"].fillna("Categoria Desconhecida") # Fallback
+    df["Categoria"] = df["Categoria"].fillna("CATEGORIA DESCONHECIDA") # Fallback
 
     # Dropando repetidos
     df.drop_duplicates(inplace=True)
@@ -101,17 +108,39 @@ def preencher_preco(df: pd.DataFrame, precos_unitarios: dict) -> pd.DataFrame:
     
     return df
 
+def preencher_data(df: pd.DataFrame) -> pd.DataFrame:
+    df["Data"] = df["Data"].ffill().bfill()
+    return df
+
+def preencher_quantidade(df: pd.DataFrame) -> pd.DataFrame:
+    if df["Quantidade"].notna().any():
+        df["Quantidade"] = df["Quantidade"].fillna(df["Quantidade"].median())
+    else:
+        df["Quantidade"] = df["Quantidade"].fillna(0)
+    return df
+
+def normalizar_texto(texto: str) -> str:
+    if pd.isna(texto):
+        return texto
+    
+    texto = texto.strip().upper()
+    texto = "".join(
+        char for char in unicodedata.normalize("NFD", texto)
+        if unicodedata.category(char) != "Mn"
+    )
+
+    return texto
+
 def get_precos_unitarios(df: pd.DataFrame) -> dict:
     precos_unitarios = {}
 
     for _, linha in df.iterrows():
         produto = linha["Produto"]
         preco = linha["Preço"]
-        quantidade = linha["Quantidade"]
 
-        if pd.notna(produto) and pd.notna(preco) and pd.notna(quantidade) and quantidade != 0:
+        if pd.notna(produto) and pd.notna(preco):
             if produto not in precos_unitarios:
-                precos_unitarios[produto] = preco / quantidade
+                precos_unitarios[produto] = preco
 
     return precos_unitarios
 
