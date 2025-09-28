@@ -1,0 +1,51 @@
+ID,Data,Produto,Categoria,Quantidade,Preço
+1,2023-01-07,Computador Gamer,Eletrônicos,16.0,88000.0
+2,2023-01-10,Lasanha Congelada 500g,Alimentos,10.0,300.0
+3,2023-01-24,Lasanha Congelada 500g,Alimentos,9.0,270.0
+4,2023-01-24,Café Pelé 500g,Alimentos,4.0,60.0
+5,2023-01-28,Café Pelé 500g,Alimentos,13.0,195.0
+6,2023-02-05,Notebook,Eletrônicos,7.0,31500.0
+7,2023-02-12,Computador Gamer,Eletrônicos,1.0,5500.0
+8,2023-02-15,Computador Gamer,Eletrônicos,17.0,93500.0
+9,2023-02-19,Café Pelé 500g,Alimentos,7.0,105.0
+10,2023-03-04,Computador Gamer,Eletrônicos,5.0,27500.0
+11,2023-03-06,Sucrilhos,Alimentos,13.0,156.0
+12,2023-04-24,Café Pelé 500g,Alimentos,6.0,90.0
+13,2023-05-08,Computador Gamer,Eletrônicos,16.0,88000.0
+14,2023-05-08,Notebook,Eletrônicos,14.0,63000.0
+15,2023-05-08,Café Pelé 500g,Alimentos,13.0,195.0
+16,2023-05-20,Notebook,Eletrônicos,3.0,13500.0
+17,2023-05-25,Computador Gamer,Eletrônicos,2.0,11000.0
+18,2023-05-29,Pinhão 1kg,Alimentos,10.0,250.0
+19,2023-06-02,Lasanha Congelada 500g,Alimentos,5.0,150.0
+20,2023-06-08,Lasanha Congelada 500g,Alimentos,12.0,360.0
+21,2023-06-11,Pinhão 1kg,Alimentos,13.0,325.0
+22,2023-06-19,Lasanha Congelada 500g,Alimentos,11.0,330.0
+23,2023-06-21,Lasanha Congelada 500g,Alimentos,7.0,210.0
+24,2023-06-22,Notebook,Eletrônicos,4.0,18000.0
+25,2023-06-26,Headset Logitech,Acessórios,15.0,2850.0
+26,2023-07-01,Headset Logitech,Acessórios,3.0,570.0
+27,2023-07-12,Pinhão 1kg,Alimentos,13.0,325.0
+28,2023-07-25,Headset Logitech,Acessórios,8.0,1520.0
+29,2023-07-31,Lasanha Congelada 500g,Alimentos,3.0,90.0
+30,2023-08-09,Sucrilhos,Alimentos,4.0,48.0
+31,2023-08-31,Headset Logitech,Acessórios,4.0,760.0
+32,2023-09-03,Lasanha Congelada 500g,Alimentos,11.0,330.0
+33,2023-09-17,Headset Logitech,Acessórios,6.0,1140.0
+34,2023-09-21,Sucrilhos,Alimentos,10.0,120.0
+35,2023-09-22,Lasanha Congelada 500g,Alimentos,18.0,540.0
+36,2023-09-24,Geforce RTX 5090,Eletrônicos,14.0,49000.0
+37,2023-10-05,Pinhão 1kg,Alimentos,15.0,375.0
+38,2023-10-31,Headset Logitech,Acessórios,5.0,950.0
+39,2023-11-01,Pinhão 1kg,Alimentos,2.0,50.0
+40,2023-11-03,Café Pelé 500g,Alimentos,5.0,75.0
+41,2023-11-05,Sucrilhos,Alimentos,5.0,60.0
+42,2023-11-07,Lasanha Congelada 500g,Alimentos,2.0,60.0
+43,2023-11-13,Geforce RTX 5090,Eletrônicos,8.0,28000.0
+44,2023-11-17,Headset Logitech,Acessórios,17.0,3230.0
+45,2023-11-21,Computador Gamer,Eletrônicos,2.0,11000.0
+46,2023-11-24,Sucrilhos,Alimentos,2.0,24.0
+47,2023-11-28,Lasanha Congelada 500g,Alimentos,2.0,60.0
+48,2023-12-03,Sucrilhos,Alimentos,7.0,84.0
+49,2023-12-16,Lasanha Congelada 500g,Alimentos,16.0,480.0
+50,2023-12-18,Geforce RTX 5090,Eletrônicos,2.0,7000.0

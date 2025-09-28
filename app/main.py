@@ -160,7 +160,7 @@ if __name__ == "__main__":
         print("Dataset limpo com sucesso!")
         print(dataset_limpo.head(10))
 
-        salvar_dataset(dataset_limpo, "./dataset/cleaned/dataset_vendas_limpo.csv")
+        salvar_dataset(dataset_limpo, "./dataset/clean/data_clean.csv")
   
     else:
         print("Falha ao carregar o dataset.")
