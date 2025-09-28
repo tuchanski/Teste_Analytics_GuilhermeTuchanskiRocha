@@ -35,12 +35,12 @@ def carregar_dataset() -> pd.DataFrame | None:
     
 def limpar_dataset(df: pd.DataFrame) -> pd.DataFrame:
 
-    precos_unitarios = get_precos_unitarios(df)
-    categorias = get_categorias(df)
-
     # Normalizando texto
     df["Produto"] = df["Produto"].apply(normalizar_texto)
     df["Categoria"] = df["Categoria"].apply(normalizar_texto)
+
+    precos_unitarios = get_precos_unitarios(df)
+    categorias = get_categorias(df)
 
     # Tipagem
     df["Data"] = pd.to_datetime(df["Data"], errors="coerce")
