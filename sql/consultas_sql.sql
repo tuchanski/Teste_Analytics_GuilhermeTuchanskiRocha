@@ -13,7 +13,6 @@ ORDER BY Total_Vendas DESC;
 -- Consulta SQL para identificar os produtos que venderam menos no mês de junho de 2023.
 -- Na requisição do teste técnico está escrito junho/2024, mas todo o contexto do teste é 2023.
 -- Portanto, considerei junho de 2023. Mas se for 2024, basta alterar a data no filtro WHERE.
--- Limitei a 5 resultados para facilitar a visualização.
 
 SELECT Produto, Categoria, SUM(Quantidade * `Preço`) AS Total_Vendas_Junho
 FROM Vendas
