@@ -141,6 +141,13 @@ def get_categorias(df: pd.DataFrame) -> dict:
 
     return categorias
 
+def salvar_dataset(df: pd.DataFrame, caminho: str) -> None:
+    try:
+        df.to_csv(caminho, index=False)
+        print(f"Dataset limpo salvo com sucesso em {caminho}")
+    except Exception as e:
+        print(f"Erro ao salvar o dataset: {e}")
+
 if __name__ == "__main__":
     dataset = carregar_dataset()
 
@@ -152,6 +159,8 @@ if __name__ == "__main__":
 
         print("Dataset limpo com sucesso!")
         print(dataset_limpo.head(10))
+
+        salvar_dataset(dataset_limpo, "./dataset/cleaned/dataset_vendas_limpo.csv")
   
     else:
         print("Falha ao carregar o dataset.")
