@@ -89,4 +89,5 @@ for indice in indices_duplicatas:
     df = df.reset_index(drop=True) # Reseta os índices após adicionar duplicatas
 
 # Salvando o dataset em um arquivo CSV
-df.to_csv("./dataset/dirty/dataset_vendas.csv", index=False)
+df.to_csv("./dataset/dirty/dataset_vendas_sujo.csv", index=False)
+print("Dataset sujo gerado com sucesso em 'dataset/dirty/dataset_vendas_sujo.csv'")
