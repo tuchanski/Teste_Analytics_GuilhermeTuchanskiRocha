@@ -21,7 +21,7 @@ produtos = {
     "Notebook": [categorias["ELETRONICOS"], 4500.00],
     "Computador Gamer": [categorias["ELETRONICOS"], 5500.00],
     "Headset Logitech": [categorias["ACESSORIOS"], 190.00],
-    "Geforce RTX 5090": [categorias["ELETRONICOS"], 13000.00],
+    "Geforce RTX 2070": [categorias["ELETRONICOS"], 2300.00],
     "Café Pelé 500g": [categorias["ALIMENTOS"], 15.00],
     "Lasanha Congelada 500g": [categorias["ALIMENTOS"], 30.00],
     "Pinhão 1kg": [categorias["ALIMENTOS"], 25.00],

@@ -89,11 +89,10 @@ def preencher_produto(df: pd.DataFrame, precos_unitarios: dict) -> pd.DataFrame:
     for indice, linha in df.iterrows():
         produto = linha["Produto"]
         preco = linha["Preço"]
-        quantidade = linha["Quantidade"]
 
-        if pd.isna(produto) and pd.notna(preco) and pd.notna(quantidade):
+        if pd.isna(produto) and pd.notna(preco):
             for prod, preco_unit in precos_unitarios.items():
-                if np.isclose(preco, preco_unit * quantidade):
+                if np.isclose(preco, preco_unit):
                     df.at[indice, "Produto"] = prod
                     break
     return df
