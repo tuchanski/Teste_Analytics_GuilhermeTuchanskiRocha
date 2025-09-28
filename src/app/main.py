@@ -18,16 +18,17 @@ pd.set_option("display.float_format", "{:.2f}".format)
 
 # === Constantes ===
 
-CAMINHO_DATASET = os.getenv("DIRTY_DATASET_PATH")
+CAMINHO_DATASET_SUJO = os.getenv("DIRTY_DATASET_PATH")
+CAMINHO_DATASET_LIMPO = os.getenv("CLEANED_DATASET_PATH")
 
 # === Funções ===
 
 def carregar_dataset() -> pd.DataFrame | None:
     try:
-        df = pd.read_csv(CAMINHO_DATASET)
+        df = pd.read_csv(CAMINHO_DATASET_SUJO)
         return df
     except FileNotFoundError:
-        print(f"Erro: O arquivo no caminho {CAMINHO_DATASET} não foi encontrado.")
+        print(f"Erro: O arquivo no caminho {CAMINHO_DATASET_SUJO} não foi encontrado.")
         return None
     except Exception as e:
         print(f"Erro ao carregar o dataset: {e}")
@@ -175,7 +176,7 @@ if __name__ == "__main__":
         print("Dataset limpo com sucesso!")
         print(dataset_limpo.head(10))
 
-        salvar_dataset(dataset_limpo, "./dataset/clean/data_clean.csv")
+        salvar_dataset(dataset_limpo, CAMINHO_DATASET_LIMPO)
   
     else:
         print("Falha ao carregar o dataset.")
