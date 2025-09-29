@@ -1,99 +1,108 @@
-# Teste para Estagiário de Analytics Quod
+# 📊 Teste_Analytics_GuilhermeTuchanskiRocha
 
-## Guilherme Tuchanski Rocha
+Este repositório contém a solução para o Teste de Estagiário de Analytics da Quod.
+O objetivo foi criar um conjunto fictício de dados sujo, tratá-lo e realizar uma série de análises utilizando ferramentas de ciência de dados.
 
-# 📊 Análise de Dados
-
-## 1. Produto com maior faturamento
-
-- O notebook é o produto que lidera com vendas totais (R$ 445.500,00)
-- Logo vem o Computador Gamer (R$231.000,00) e a RTX 2070 (R$ 128.800,00)
-
-É evidente que os produtos de alto valor são os principais responsáveis pelo faturamento,
-mesmo que não sejam necessariamente os mais vendidos no quesito quantidade.
-
-Portanto: O mix de vendas é dominado pelos itens caros, ou seja, poucas unidades já representam
-muito dinheiro.
+A linguagem escolhida para o desafio foi Python, devido à experiência prévia em projetos pessoais e acadêmicos com Pandas, Matplotlib e Numpy.
 
 ---
 
-## 2. Produto com maior quantidade vendida
+## 📂 Estrutura do Repositório
 
-- O notebook também lidera no topo com 99 unidades vendidas.
-- Depois, temos o Café Pelé (98 unidades) e o Headset Logitech (95 unidades)
-
-Portanto: Produtos mais baratos vendem quase a mesma coisa que o notebook no quesito quantidade, mas faturam bem menos.
-Itens de consumo são fortes na venda, mas a margem/faturamento vem predominantemente dos eletrônicos.
-
----
-
-## 3. Quantidade vs Faturamento
-
-- Café Pelé: quase 100 unidades vendidas, mas R$1470.00 de receita.
-- Notebook: também quase 100 unidades, mas R$445.500,00 de receita. (!)
-
-Portanto: Eletrônicos caros são essenciais para o resultado financeiro. Mas os produtos mais baratos ajudam a dar giro
-no estoque.
-
----
-
-## 4. O notebook
-
-É evidente que o notebook é muito popular, apesar de ser caro.
-
----
-
-## 5. Insights Finais da Análise 1
-
-### 5.1. Diversificação
-
-A empresa depende muito dos eletrônicos, em especial do notebook. Uma queda na demanda traria um grande impacto.
-
-### 5.2. Estratégia de preços
-
-Produtos de consumo, apesar de não serem muito impactantes no faturamento, podem ser úteis
-para fidelizar clientes.
-
-### 5.3. Promoções
-
-Vale a pena oferecer descontos em produtos mais baratos, para aumentar o fluxo de clientes na loja,
-já que isso por consequência aumentaria a exposição dos produtos que de fato impactam o resultado financeiro da empresa.
+```
+├── dataset/
+│   ├── clean/
+│   │   └── data_clean.csv         # Dataset simulado (limpo)
+│   └── dirty/
+│       └── data_dirty.csv         # Dataset simulado original (sujo)
+├── src/
+│   ├── analysis/
+│   │   ├── pt1-analysis.py        # Script de análise e visualização dos dados
+│   │   └── plots/
+│   │       └── monthly_sales_amount.png # Gráfico de tendência mensal de vendas
+│   └── app/
+│       ├── main.py                # Script de limpeza do dataset
+│       └── models/
+│           └── dataset_generator.py # Simulação do dataset de vendas sujo
+├── sql/
+│   ├── consultas_sql.sql          # Consultas SQL solicitadas no teste
+│   └── README.md                  # Explicação das consultas SQL
+├── insights/
+│   └── relatorio_insights.pdf     # Relatório com principais insights e recomendações
+├── .env
+├── .gitignore
+├── requirements.txt
+└── README.md
+```
 
 ---
 
-## 6. Gráfico de Tendência de Vendas ao Longo do Tempo
+## ⚙️ Como Executar os Scripts
 
-![chart](./src/analysis/plots/monthly_sales_amount.png)
+> ℹ️ As análises utilizam o dataset limpo (data_clean.csv), obtido a partir do arquivo original dataset/dirty/data_dirty.csv.
+> Como o script `dataset_generator.py` gera um conjunto de dados novo, ao ser executado novamente produzirá resultados diferentes, e o estudo disponibilizado não se aplicará ao novo dataset.
 
-Nesse caso, poderiamos avaliar também pela métrica de quantidade de produtos vendidos
-por mês. Aqui, escolhi o faturamento para uma análise mais completa do desempenho mensal.
+1. **Instalar as dependências**
 
-### 6.1. Oscilação
+   ```powershell
+   pip install -r requirements.txt
+   ```
 
-Janeiro e Julho praticamente zerados, portanto são meses de desempenho financeiro extremamente baixos.
-Porém, em Agosto e Novembro a receita explodiu.
+2. **Simular os dados**
 
-### 6.2. Picos
+   ```powershell
+   python src/app/models/dataset_generator.py
+   ```
 
-Agosto e Novembro são os meses com maior faturamento.
+3. **Limpar os dados**
 
-Em Novembro ocorre a Black Friday, que pode ter relação com o aumento expressivo de faturamento,
-dado que o que efetivamente traz resultados expressivos são os produtos de valor mais elevado.
+   ```powershell
+   python src/app/main.py
+   ```
 
-Em Agosto pode ser algum tipo de campanha/promoção específico da loja, que novamente oferte
-preços mais chamativos para os produtos de alto valor.
+   O dataset limpo será salvo em `dataset/clean/data_clean.csv`.
 
-### 6.3. Produtos Caros
+4. **Analisar e visualizar os dados**
 
-O gráfico evidencia quedas muito bruscas quando os eletrônicos de alto valor não são vendidos expressivamente.
-É evidente que os produtos consumo recorrente / baratos vendem em quantidade, mas não conseguem sustentar
-o faturamento sozinhos.
+   ```powershell
+   python src/analysis/pt1-analysis.py
+   ```
 
-### 6.4. Insights Estratégicos
+   O gráfico será salvo em `src/analysis/plots/`.
 
-- A empresa é MUITO dependente de meses específicos (Agosto e Novembro). Essa dependência é um risco se, por exemplo,
-  não tiver estoque o suficiente dos eletrônicos nesses meses.
+5. **Executar as consultas SQL**
 
-- Baixa consistência mensal: falta de planejamento ou eventos pontuais.
+   As queries estão disponíveis em `sql/consultas_sql.sql`.  
+   É importante que, nesse contexto, haja um banco de dados real com os dados do `data_clean.csv`.
 
-- Oportunidade: Seria interessante a empresa criar promoções também em meses considerados fracos.
+6. **Consultar o Relatório de Insights**
+
+   O relatório final está em `insights/relatorio_insights.pdf`.
+
+---
+
+## 📦 Dependências
+
+- Python
+- pandas
+- matplotlib
+- numpy
+- python-dotenv
+
+---
+
+## 📑 Observações e Suposições
+
+- O dataset de vendas foi simulado conforme solicitado, abrangendo o período de **01/01/2023 a 31/12/2023**, com pelo menos 50 registros e as colunas especificadas.
+- Os nomes das colunas foram mantidos conforme solicitado no teste. Em um projeto real, aplicaria padronização para maior consistência.
+- Valores faltantes e duplicados foram tratados conforme as instruções.
+- As análises e visualizações consideram o dataset **limpo**.
+- As consultas SQL assumem que os dados estejam estruturados de acordo com `data_clean.csv`.
+- O relatório de insights foi elaborado com base nos resultados das análises e consultas.
+
+---
+
+## 🧑‍💻 Autor
+
+- Guilherme Tuchanski Rocha
+- [LinkedIn](https://www.linkedin.com/in/tuchanski)
