@@ -39,7 +39,7 @@ A linguagem escolhida para o desafio foi Python, devido à experiência prévia 
 
 ## ⚙️ Como Executar os Scripts
 
-> ℹ️ As análises utilizam o dataset limpo (data_clean.csv), obtido a partir do arquivo original dataset/dirty/data_dirty.csv.
+> ℹ️ As análises utilizam o dataset limpo (`data_clean.csv`), obtido a partir do arquivo original `dataset/dirty/data_dirty.csv`.
 > Como o script `dataset_generator.py` gera um conjunto de dados novo, ao ser executado novamente produzirá resultados diferentes, e o estudo disponibilizado não se aplicará ao novo dataset.
 
 1. **Instalar as dependências**
