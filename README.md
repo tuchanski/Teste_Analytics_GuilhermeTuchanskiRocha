@@ -3,7 +3,7 @@
 Este repositório contém a solução para o Teste de Estagiário de Analytics da Quod.
 O objetivo foi criar um conjunto fictício de dados sujo, tratá-lo e realizar uma série de análises utilizando ferramentas de ciência de dados.
 
-A linguagem escolhida para o desafio foi Python, devido à experiência prévia em projetos pessoais e acadêmicos com Pandas, Matplotlib e Numpy.
+A linguagem escolhida para o desafio foi Python, devido à minha experiência prévia em projetos pessoais e acadêmicos com Pandas, Matplotlib e Numpy.
 
 ---
 
@@ -99,6 +99,49 @@ A linguagem escolhida para o desafio foi Python, devido à experiência prévia 
 - As análises e visualizações consideram o dataset **limpo**.
 - As consultas SQL assumem que os dados estejam estruturados de acordo com `data_clean.csv`.
 - O relatório de insights foi elaborado com base nos resultados das análises e consultas.
+
+---
+
+## 📊 Insights da Análise
+
+### 1. Produto com maior faturamento
+
+- **Notebook** lidera o faturamento com **R$ 445.500,00**.
+- Em seguida, **Computador Gamer (R$ 231.000,00)** e **RTX 2070 (R$ 128.800,00)**.  
+  ➡️ **Conclusão**: Produtos de alto valor representam a maior parte do faturamento, mesmo sem necessariamente serem os mais vendidos em quantidade.
+
+### 2. Produto com maior quantidade vendida
+
+- **Notebook** também lidera em unidades vendidas (**99**).
+- Logo depois, **Café Pelé (98)** e **Headset Logitech (95)**.  
+  ➡️ **Conclusão**: Produtos baratos vendem muito, mas não têm impacto relevante no faturamento.
+
+### 3. Quantidade vs Faturamento
+
+- **Café Pelé**: quase 100 unidades, receita de apenas **R$ 1.470,00**.
+- **Notebook**: ~100 unidades, receita de **R$ 445.500,00**.  
+  ➡️ **Conclusão**: Eletrônicos caros são essenciais para a saúde financeira.
+
+### 4. Insights
+
+- **Diversificação**: dependência excessiva de eletrônicos, especialmente notebook.
+- **Estratégia de preços**: produtos de consumo podem ser usados para fidelizar clientes.
+- **Promoções**: descontos em itens baratos aumentam fluxo de clientes e exposição aos eletrônicos caros.
+
+### 6. Gráfico de Tendência de Vendas
+
+- **Janeiro e Julho**: desempenho muito baixo.
+- **Agosto e Novembro**: picos de receita.
+  - Novembro → efeito de **Black Friday**.
+  - Agosto → provável campanha ou promoção.
+- **Dependência dos meses fortes**: risco se não houver estoque dos eletrônicos.  
+  ➡️ **Oportunidade**: criar promoções em meses fracos para suavizar oscilações.
+
+---
+
+## Gráfico de Tendência de Vendas ao Longo do Tempo
+
+![chart](./src/analysis/plots/monthly_sales_amount.png)
 
 ---
 
